@@ -41,11 +41,11 @@ module.exports = class Instagram {
       'origin': 'https://www.instagram.com',
       'referer': 'https://www.instagram.com/',
       'upgrade-insecure-requests': '1',
-      'user-agent': this.userAgent,    
+      'user-agent': this.userAgent,
     }
   }
 
-  
+
   generateCookie(simple){
     if (simple) return 'ig_cb=1'
 
@@ -87,7 +87,7 @@ module.exports = class Instagram {
         var startStr = '<script type="text/javascript">window._sharedData = ';
         var start = subStr.indexOf(startStr) + startStr.length;
         subStr = subStr.substr(start, subStr.length);
-        
+
         subStr = subStr.substr(0, subStr.indexOf('</script>') - 1);
 
         var json = JSON.parse(subStr);
@@ -103,7 +103,7 @@ module.exports = class Instagram {
     * @return {Object} Promise
   */
   getUserDataByUsername(username) {
-    
+
     var fetch_data = {
       'method': 'get',
       'headers':
@@ -115,10 +115,10 @@ module.exports = class Instagram {
           }
         )
     }
-    
+
     return fetch('https://www.instagram.com/' + username, fetch_data).then(res => res.text().then(function (data) {
       console.log(data)
-    
+
       const regex = /window\._sharedData = (.*);<\/script>/;
       const match = regex.exec(data);
       if (typeof match[1] === 'undefined') {
@@ -270,7 +270,7 @@ module.exports = class Instagram {
   var options = {
     method  : 'POST',
     body    : formdata,
-    headers : 
+    headers :
       this.combineWithBaseHeader(
         {
           'accept'            : '*/*',
@@ -280,7 +280,7 @@ module.exports = class Instagram {
           'cookie'            : 'ig_cb=' + this.essentialValues.ig_cb,
           'x-csrftoken'       : this.csrfToken,
           'x-instagram-ajax'  : this.rollout_hash,
-          'x-requested-with'  : 'XMLHttpRequest',
+          // 'x-requested-with'  : 'XMLHttpRequest',
         }
       )
   }
@@ -319,7 +319,7 @@ module.exports = class Instagram {
         'origin': 'https://www.instagram.com',
         'user-agent': this.userAgent,
         'x-instagram-ajax': '1',
-        'x-requested-with': 'XMLHttpRequest',
+        // 'x-requested-with': 'XMLHttpRequest',
         'x-csrftoken': this.csrfToken,
         cookie: 'csrftoken=' + this.csrfToken
       }
@@ -350,7 +350,7 @@ module.exports = class Instagram {
       'user-agent': this.userAgent,
       'x-instagram-ajax': '1',
       'content-type': 'application/json',
-      'x-requested-with': 'XMLHttpRequest',
+      // 'x-requested-with': 'XMLHttpRequest',
       'x-csrftoken': undefined,
       cookie: ' sessionid=' + this.sessionId + '; csrftoken=' + this.csrfToken + '; mid=WPL0LQAEAAGG3XL5-xHXzClnpqA3; rur=ASH; mid=WRN1_AAEAAE07QksztCl3OCnLj8Y;'
     }
