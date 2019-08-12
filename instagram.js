@@ -374,7 +374,7 @@ module.exports = class Instagram {
       'user-agent': this.userAgent,
       // 'x-instagram-ajax': '1',
       // 'x-requested-with': 'XMLHttpRequest',
-      'x-csrftoken': this.csrfToken,
+      // 'x-csrftoken': this.csrfToken,
       cookie: ' sessionid=' + this.sessionId + '; csrftoken=' + this.csrfToken + ';'
     }
   }
