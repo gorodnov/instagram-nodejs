@@ -372,7 +372,7 @@ module.exports = class Instagram {
       'referer': 'https://www.instagram.com/p/BT1ynUvhvaR/?taken-by=yatsenkolesh',
       'origin': 'https://www.instagram.com',
       'user-agent': this.userAgent,
-      'x-instagram-ajax': '1',
+      // 'x-instagram-ajax': '1',
       // 'x-requested-with': 'XMLHttpRequest',
       'x-csrftoken': this.csrfToken,
       cookie: ' sessionid=' + this.sessionId + '; csrftoken=' + this.csrfToken + ';'
